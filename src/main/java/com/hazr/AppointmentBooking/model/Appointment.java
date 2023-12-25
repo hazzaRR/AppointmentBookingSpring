@@ -23,10 +23,10 @@ public class Appointment {
     private LocalTime endTime;
 
     @OneToOne
-    @JoinColumn(name = "clientID", nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private Client client;
 
-    @Column(name = "TotalPrice", precision = 6, scale = 2, columnDefinition = "DEFAULT 0")
+    @Column(name = "TotalPrice")
     private Double totalPrice;
 
 

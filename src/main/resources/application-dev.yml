@@ -2,7 +2,7 @@ spring:
   datasource:
     username: postgres
     password: password
-    url: jdbc:postgresql://localhost:54321/blog
+    url: jdbc:postgresql://localhost:54321/appointmentBookings
   sql:
     init:
       mode: always

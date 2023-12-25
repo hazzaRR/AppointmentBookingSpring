@@ -12,7 +12,7 @@ public class Service {
     @Column(name = "serviceName", length = 40)
     private String serviceName;
 
-    @Column(precision = 6, scale = 2)
+    @Column(name = "price")
     private Double price;
 
     @Column(name = "durationMinutes")
