@@ -29,24 +29,34 @@ public class Appointment {
     @Column(name = "TotalPrice", precision = 6, scale = 2, columnDefinition = "DEFAULT 0")
     private Double totalPrice;
 
+
+    @Column(name = "status")
+    private String status;
+    @Column(name = "paymentType")
+    private String paymentType;
+
     protected Appointment() {
     }
 
-    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice) {
+    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType) {
         this.id = id;
         this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.client = client;
         this.totalPrice = totalPrice;
+        this.status = status;
+        this.paymentType = paymentType;
     }
 
-    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice) {
+    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType) {
         this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.client = client;
         this.totalPrice = totalPrice;
+        this.status = status;
+        this.paymentType = paymentType;
     }
 
     public Long getId() {

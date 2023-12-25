@@ -29,6 +29,8 @@ CREATE TABLE appointment (
      endTime TIME,
      clientID INTEGER NOT NULL,
      TotalPrice NUMERIC(6, 2) DEFAULT 0,
+     status VARCHAR(20),
+     paymentType VARCHAR(20),
      FOREIGN KEY (ClientID) REFERENCES client(ID),
      CONSTRAINT unique_appointment UNIQUE (appDate, StartTime, EndTime)
 );
