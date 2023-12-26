@@ -45,4 +45,4 @@ CREATE TABLE if not exists appointment_treatment (
    FOREIGN KEY (appointmentID) REFERENCES appointment(ID) ON DELETE CASCADE
 );
 
-INSERT INTO users (id, username, password, firstname, surname, role) VALUES (0, 'harryredman', '$2a$10$EwkR./m0nafR6GhAOErcAOawGqG.4nYbVxgZkJbWqhEJHvbP6nzZm', 'harry', 'redman', 'ROLE_USER');
+INSERT INTO users (id, username, password, firstname, surname, role) VALUES (0, 'harryredman', '$2a$10$EwkR./m0nafR6GhAOErcAOawGqG.4nYbVxgZkJbWqhEJHvbP6nzZm', 'harry', 'redman', 'ROLE_USER') ON CONFLICT DO NOTHING;

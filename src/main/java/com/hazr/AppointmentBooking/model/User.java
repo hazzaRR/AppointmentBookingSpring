@@ -31,6 +31,18 @@ public class User implements UserDetails {
     @Column(name = "surname")
     private String surname;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
+
     protected User() {
     }
 

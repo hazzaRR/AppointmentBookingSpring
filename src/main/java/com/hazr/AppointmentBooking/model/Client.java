@@ -21,6 +21,17 @@ public class Client {
     @Column(length = 20)
     private String telephone;
 
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
+    }
+
     protected Client() {
     }
 

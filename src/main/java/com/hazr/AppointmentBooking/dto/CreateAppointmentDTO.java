@@ -70,11 +70,11 @@ public class CreateAppointmentDTO {
         this.totalPrice = totalPrice;
     }
 
-    public List<Treatment> getServices() {
+    public List<Treatment> getTreatments() {
         return treatments;
     }
 
-    public void setServices(List<Treatment> treatments) {
+    public void setTreatments(List<Treatment> treatments) {
         this.treatments = treatments;
     }
 }

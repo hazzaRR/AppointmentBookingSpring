@@ -18,6 +18,17 @@ public class Treatment {
     @Column(name = "durationMinutes")
     private Integer durationMinutes;
 
+
+    @Override
+    public String toString() {
+        return "Treatment{" +
+                "id=" + id +
+                ", treatmentName='" + treatmentName + '\'' +
+                ", price=" + price +
+                ", durationMinutes=" + durationMinutes +
+                '}';
+    }
+
     protected Treatment() {
     }
 

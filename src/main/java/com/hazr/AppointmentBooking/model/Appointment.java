@@ -23,7 +23,7 @@ public class Appointment {
     private LocalTime endTime;
 
     @OneToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "clientid", nullable = false)
     private Client client;
 
     @Column(name = "TotalPrice")
@@ -43,6 +43,21 @@ public class Appointment {
     )
 
     private List<Treatment> treatments;
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id=" + id +
+                ", appDate=" + appDate +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", client=" + client +
+                ", totalPrice=" + totalPrice +
+                ", status='" + status + '\'' +
+                ", paymentType='" + paymentType + '\'' +
+                ", treatments=" + treatments +
+                '}';
+    }
 
     protected Appointment() {
     }

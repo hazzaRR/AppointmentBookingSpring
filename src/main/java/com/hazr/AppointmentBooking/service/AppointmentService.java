@@ -42,7 +42,7 @@ public class AppointmentService {
 
     public void createAppointment(CreateAppointmentDTO createAppointmentDTO) {
 
-        Appointment appointment = new Appointment(createAppointmentDTO.getAppDate(), createAppointmentDTO.getStartTime(), createAppointmentDTO.getEndTime(), createAppointmentDTO.getClient(), createAppointmentDTO.getTotalPrice(), "upcoming", null, createAppointmentDTO.getServices());
+        Appointment appointment = new Appointment(createAppointmentDTO.getAppDate(), createAppointmentDTO.getStartTime(), createAppointmentDTO.getEndTime(), createAppointmentDTO.getClient(), createAppointmentDTO.getTotalPrice(), "upcoming", null, createAppointmentDTO.getTreatments());
         appointmentRepository.save(appointment);
     }
 
