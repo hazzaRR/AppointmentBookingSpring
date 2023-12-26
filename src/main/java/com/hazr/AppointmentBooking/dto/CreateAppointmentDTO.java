@@ -1,10 +1,7 @@
 package com.hazr.AppointmentBooking.dto;
 
 import com.hazr.AppointmentBooking.model.Client;
-import com.hazr.AppointmentBooking.model.Service;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import com.hazr.AppointmentBooking.model.Treatment;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,15 +19,15 @@ public class CreateAppointmentDTO {
 
     private Double totalPrice;
 
-    private List<Service> services;
+    private List<Treatment> treatments;
 
-    public CreateAppointmentDTO(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, List<Service> services) {
+    public CreateAppointmentDTO(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, List<Treatment> treatments) {
         this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
         this.client = client;
         this.totalPrice = totalPrice;
-        this.services = services;
+        this.treatments = treatments;
     }
 
     public LocalDate getAppDate() {
@@ -73,11 +70,11 @@ public class CreateAppointmentDTO {
         this.totalPrice = totalPrice;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public List<Treatment> getServices() {
+        return treatments;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
+    public void setServices(List<Treatment> treatments) {
+        this.treatments = treatments;
     }
 }

@@ -1,7 +1,6 @@
 package com.hazr.AppointmentBooking.model;
 
 import jakarta.persistence.*;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,18 +37,18 @@ public class Appointment {
 
     @ManyToMany
     @JoinTable(
-            name = "appointment_service",
+            name = "appointment_treatment",
             joinColumns = @JoinColumn(name = "appointment_id"),
-            inverseJoinColumns = @JoinColumn(name = "service_id")
+            inverseJoinColumns = @JoinColumn(name = "treatment_id")
     )
 
-    private List<Service> services;
+    private List<Treatment> treatments;
 
     protected Appointment() {
     }
 
 
-    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Service> services) {
+    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Treatment> treatments) {
         this.id = id;
         this.appDate = appDate;
         this.startTime = startTime;
@@ -58,10 +57,10 @@ public class Appointment {
         this.totalPrice = totalPrice;
         this.status = status;
         this.paymentType = paymentType;
-        this.services = services;
+        this.treatments = treatments;
     }
 
-    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Service> services) {
+    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Treatment> treatments) {
         this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -69,7 +68,7 @@ public class Appointment {
         this.totalPrice = totalPrice;
         this.status = status;
         this.paymentType = paymentType;
-        this.services = services;
+        this.treatments = treatments;
     }
 
     public Long getId() {
@@ -136,11 +135,11 @@ public class Appointment {
         this.paymentType = paymentType;
     }
 
-    public List<Service> getServices() {
-        return services;
+    public List<Treatment> getServices() {
+        return treatments;
     }
 
-    public void setServices(List<Service> services) {
-        this.services = services;
+    public void setServices(List<Treatment> treatments) {
+        this.treatments = treatments;
     }
 }

@@ -16,9 +16,9 @@ CREATE TABLE if not exists client (
 );
 
 
-CREATE TABLE if not exists service (
+CREATE TABLE if not exists treatment (
      ID BIGSERIAL PRIMARY KEY,
-     serviceName VARCHAR,
+     treatmentName VARCHAR,
      Price NUMERIC,
      durationMinutes INTEGER
 );
@@ -37,11 +37,11 @@ CREATE TABLE if not exists appointment (
 );
 
 
-CREATE TABLE if not exists appointment_service (
+CREATE TABLE if not exists appointment_treatment (
    ID BIGSERIAL PRIMARY KEY,
    appointmentID BIGINT,
-   serviceID BIGINT,
-   FOREIGN KEY (serviceID) REFERENCES service(ID),
+   treatmentID BIGINT,
+   FOREIGN KEY (treatmentID) REFERENCES treatment(ID),
    FOREIGN KEY (appointmentID) REFERENCES appointment(ID) ON DELETE CASCADE
 );
 

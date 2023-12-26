@@ -3,14 +3,14 @@ package com.hazr.AppointmentBooking.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "service")
-public class Service {
+@Table(name = "treatment")
+public class Treatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "serviceName", length = 40)
-    private String serviceName;
+    @Column(name = "treatmentName", length = 40)
+    private String treatmentName;
 
     @Column(name = "price")
     private Double price;
@@ -18,18 +18,18 @@ public class Service {
     @Column(name = "durationMinutes")
     private Integer durationMinutes;
 
-    protected Service() {
+    protected Treatment() {
     }
 
-    public Service(Long id, String serviceName, Double price, Integer durationMinutes) {
+    public Treatment(Long id, String treatmentName, Double price, Integer durationMinutes) {
         this.id = id;
-        this.serviceName = serviceName;
+        this.treatmentName = treatmentName;
         this.price = price;
         this.durationMinutes = durationMinutes;
     }
 
-    public Service(String serviceName, Double price, Integer durationMinutes) {
-        this.serviceName = serviceName;
+    public Treatment(String treatmentName, Double price, Integer durationMinutes) {
+        this.treatmentName = treatmentName;
         this.price = price;
         this.durationMinutes = durationMinutes;
     }
@@ -42,12 +42,12 @@ public class Service {
         this.id = id;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public String getTreatmentName() {
+        return treatmentName;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setTreatmentName(String serviceName) {
+        this.treatmentName = serviceName;
     }
 
     public Double getPrice() {
