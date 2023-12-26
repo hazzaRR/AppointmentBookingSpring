@@ -5,6 +5,7 @@ import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Table(name = "appointment")
@@ -35,10 +36,20 @@ public class Appointment {
     @Column(name = "paymentType")
     private String paymentType;
 
+    @ManyToMany
+    @JoinTable(
+            name = "appointment_service",
+            joinColumns = @JoinColumn(name = "appointment_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+
+    private List<Service> services;
+
     protected Appointment() {
     }
 
-    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType) {
+
+    public Appointment(Long id, LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Service> services) {
         this.id = id;
         this.appDate = appDate;
         this.startTime = startTime;
@@ -47,9 +58,10 @@ public class Appointment {
         this.totalPrice = totalPrice;
         this.status = status;
         this.paymentType = paymentType;
+        this.services = services;
     }
 
-    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType) {
+    public Appointment(LocalDate appDate, LocalTime startTime, LocalTime endTime, Client client, Double totalPrice, String status, String paymentType, List<Service> services) {
         this.appDate = appDate;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -57,6 +69,7 @@ public class Appointment {
         this.totalPrice = totalPrice;
         this.status = status;
         this.paymentType = paymentType;
+        this.services = services;
     }
 
     public Long getId() {
@@ -105,5 +118,29 @@ public class Appointment {
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 }
