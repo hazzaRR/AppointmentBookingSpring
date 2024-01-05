@@ -8,6 +8,8 @@ import com.hazr.AppointmentBooking.repository.AppointmentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,5 +69,18 @@ public class AppointmentService {
             appointmentDetails.setPaymentType(paymentType);
         }
 
+    }
+
+    public List<Appointment> fetchSummaryReport(String startDate, String endDate, String paymentType) {
+
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+        final LocalDate start = LocalDate.parse(startDate, dtf);
+        final LocalDate end = LocalDate.parse(endDate, dtf);
+
+        if(paymentType == null) {
+            return appointmentRepository.findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCase(start, end, "completed");
+        }
+
+        return appointmentRepository.findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(start, end, "completed", paymentType);
     }
 }

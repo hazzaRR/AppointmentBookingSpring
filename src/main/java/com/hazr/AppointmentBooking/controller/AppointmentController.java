@@ -29,9 +29,15 @@ public class AppointmentController {
         return appointmentService.fetchAllAppointments();
     }
 
-    @GetMapping("/postId/{id}")
+    @GetMapping("/appointmentId/{id}")
     public Appointment getAppointment(@PathVariable long id) {
         return appointmentService.fetchAppointmentById(id);
+    }
+
+    @GetMapping("/summary-report")
+    public List<Appointment> getSummaryReport(@RequestParam(value = "start") String startDate, @RequestParam(value = "end") String endDate, @RequestParam(value = "payment", required = false) String paymentType) {
+        return appointmentService.fetchSummaryReport(startDate, endDate, paymentType);
+
     }
 
     @PostMapping("/")
@@ -45,7 +51,7 @@ public class AppointmentController {
     }
 
     @PutMapping("/outcome/{id}")
-    public void updateAppointmentOutcome(@PathVariable long id, @RequestParam(value = "status", required = true) String status, @RequestParam(value = "payment", required = false) String payment_type) {
-        appointmentService.updateOutcome(id, status, payment_type);
+    public void updateAppointmentOutcome(@PathVariable long id, @RequestParam(value = "status", required = true) String status, @RequestParam(value = "payment", required = false) String paymentType) {
+        appointmentService.updateOutcome(id, status, paymentType);
     }
 }
