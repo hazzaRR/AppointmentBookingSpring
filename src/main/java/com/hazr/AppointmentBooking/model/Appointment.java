@@ -13,26 +13,26 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "appDate")
+    @Column(name = "app_date")
     private LocalDate appDate;
 
-    @Column(name = "startTime")
+    @Column(name = "start_time")
     private LocalTime startTime;
 
-    @Column(name = "endTime")
+    @Column(name = "end_time")
     private LocalTime endTime;
 
     @OneToOne
     @JoinColumn(name = "clientid", nullable = false)
     private Client client;
 
-    @Column(name = "TotalPrice")
+    @Column(name = "total_price")
     private Double totalPrice;
 
 
     @Column(name = "status")
     private String status;
-    @Column(name = "paymentType")
+    @Column(name = "payment_type")
     private String paymentType;
 
     @ManyToMany
@@ -150,11 +150,11 @@ public class Appointment {
         this.paymentType = paymentType;
     }
 
-    public List<Treatment> getServices() {
+    public List<Treatment> getTreatments() {
         return treatments;
     }
 
-    public void setServices(List<Treatment> treatments) {
+    public void setTreatments(List<Treatment> treatments) {
         this.treatments = treatments;
     }
 }

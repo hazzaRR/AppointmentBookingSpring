@@ -9,13 +9,13 @@ public class Treatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "treatmentName", length = 40)
+    @Column(name = "treatment_name", length = 40)
     private String treatmentName;
 
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "durationMinutes")
+    @Column(name = "duration_minutes")
     private Integer durationMinutes;
 
 

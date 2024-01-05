@@ -1,6 +1,7 @@
 package com.hazr.AppointmentBooking.controller;
 
 import com.hazr.AppointmentBooking.dto.CreateAppointmentDTO;
+import com.hazr.AppointmentBooking.dto.TreatmentDTO;
 import com.hazr.AppointmentBooking.model.Appointment;
 import com.hazr.AppointmentBooking.service.AppointmentService;
 import org.springframework.web.bind.annotation.*;
@@ -41,5 +42,10 @@ public class AppointmentController {
     @DeleteMapping("/postId/{id}")
     public void createAppointment(@PathVariable long id) {
         appointmentService.deleteAppointment(id);
+    }
+
+    @PutMapping("/outcome/{id}")
+    public void updateAppointmentOutcome(@PathVariable long id, @RequestParam(value = "status", required = true) String status, @RequestParam(value = "payment", required = false) String payment_type) {
+        appointmentService.updateOutcome(id, status, payment_type);
     }
 }

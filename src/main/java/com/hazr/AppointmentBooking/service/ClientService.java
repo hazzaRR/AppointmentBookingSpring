@@ -55,19 +55,19 @@ public class ClientService {
         Client clientDetails = this.fetchClient(id);
 
         if(clientDTO.getFirstname() != null && !clientDTO.getFirstname().isEmpty() && !Objects.equals(clientDTO.getFirstname(), clientDetails.getFirstname())) {
-            clientDetails.setFirstname(clientDetails.getFirstname());
+            clientDetails.setFirstname(clientDTO.getFirstname());
         }
 
         if(clientDTO.getSurname() != null && !clientDTO.getSurname().isEmpty() && !Objects.equals(clientDTO.getSurname(), clientDetails.getSurname())) {
-            clientDetails.setSurname(clientDetails.getSurname());
+            clientDetails.setSurname(clientDTO.getSurname());
         }
 
         if(clientDTO.getEmail() != null && !clientDTO.getEmail().isEmpty() && !Objects.equals(clientDTO.getEmail(), clientDetails.getEmail())) {
-            clientDetails.setEmail(clientDetails.getEmail());
+            clientDetails.setEmail(clientDTO.getEmail());
         }
 
         if(clientDTO.getTelephone() != null && !clientDTO.getTelephone().isEmpty() && !Objects.equals(clientDTO.getTelephone(), clientDetails.getTelephone())) {
-            clientDetails.setTelephone(clientDetails.getTelephone());
+            clientDetails.setTelephone(clientDTO.getTelephone());
         }
 
 

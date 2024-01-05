@@ -54,16 +54,19 @@ public class TreatmentService {
 
         Treatment treatmentDetails = this.fetchTreatment(id);
 
+        System.out.println(treatmentDetails);
+
         if(treatmentDTO.getTreatmentName() != null && !treatmentDTO.getTreatmentName().isEmpty() && !Objects.equals(treatmentDTO.getTreatmentName(), treatmentDetails.getTreatmentName())) {
-            treatmentDetails.setTreatmentName(treatmentDetails.getTreatmentName());
+            treatmentDetails.setTreatmentName(treatmentDTO.getTreatmentName());
+            System.out.println("this gets here");
         }
 
         if(treatmentDTO.getPrice() != null && !treatmentDTO.getPrice().isNaN() && !Objects.equals(treatmentDTO.getPrice(), treatmentDetails.getPrice())) {
-            treatmentDetails.setPrice(treatmentDetails.getPrice());
+            treatmentDetails.setPrice(treatmentDTO.getPrice());
         }
 
         if(treatmentDTO.getDurationMinutes() != null && !Objects.equals(treatmentDTO.getDurationMinutes(), treatmentDetails.getDurationMinutes())) {
-            treatmentDetails.setDurationMinutes(treatmentDetails.getDurationMinutes());
+            treatmentDetails.setDurationMinutes(treatmentDTO.getDurationMinutes());
         }
 
     }

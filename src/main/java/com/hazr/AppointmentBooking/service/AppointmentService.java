@@ -3,10 +3,13 @@ package com.hazr.AppointmentBooking.service;
 import com.hazr.AppointmentBooking.dto.CreateAppointmentDTO;
 import com.hazr.AppointmentBooking.exception.AppointmentDoesNotExistException;
 import com.hazr.AppointmentBooking.model.Appointment;
+import com.hazr.AppointmentBooking.model.Treatment;
 import com.hazr.AppointmentBooking.repository.AppointmentRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -48,5 +51,21 @@ public class AppointmentService {
 
     public void deleteAppointment(long id) {
         appointmentRepository.delete(this.fetchAppointment(id));
+    }
+
+
+    @Transactional
+    public void updateOutcome(long id, String status, String paymentType) {
+
+        Appointment appointmentDetails = this.fetchAppointment(id);
+
+        if(status != null && !status.isEmpty() && !Objects.equals(status, appointmentDetails.getStatus())) {
+            appointmentDetails.setStatus(status);
+        }
+
+        if(paymentType != null && !paymentType.isEmpty() && !Objects.equals(paymentType, appointmentDetails.getPaymentType())) {
+            appointmentDetails.setPaymentType(paymentType);
+        }
+
     }
 }

@@ -11,29 +11,29 @@ CREATE TABLE if not exists client (
      ID BIGSERIAL PRIMARY KEY,
      firstname VARCHAR,
      surname VARCHAR,
-     Email VARCHAR NOT NULL UNIQUE,
-     Telephone VARCHAR
+     email VARCHAR NOT NULL UNIQUE,
+     telephone VARCHAR
 );
 
 
 CREATE TABLE if not exists treatment (
      ID BIGSERIAL PRIMARY KEY,
-     treatmentName VARCHAR,
-     Price NUMERIC,
-     durationMinutes INTEGER
+     treatment_name VARCHAR,
+     price NUMERIC,
+     duration_minutes INTEGER
 );
 
 CREATE TABLE if not exists appointment (
      ID BIGSERIAL PRIMARY KEY,
-     appDate DATE,
-     startTime TIME,
-     endTime TIME,
-     clientID BIGINT NOT NULL,
-     TotalPrice NUMERIC,
+     app_date DATE,
+     start_time TIME,
+     end_time TIME,
+     clientid BIGINT NOT NULL,
+     total_price NUMERIC,
      status VARCHAR,
-     paymentType VARCHAR,
+     payment_type VARCHAR,
      FOREIGN KEY (ClientID) REFERENCES client(ID),
-     CONSTRAINT unique_appointment UNIQUE (appDate, StartTime, EndTime)
+     CONSTRAINT unique_appointment UNIQUE (app_date, start_time, end_time)
 );
 
 
