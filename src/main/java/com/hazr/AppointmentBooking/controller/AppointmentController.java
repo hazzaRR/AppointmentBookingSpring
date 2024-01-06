@@ -45,7 +45,7 @@ public class AppointmentController {
         appointmentService.createAppointment(createAppointmentDTO);
     }
 
-    @DeleteMapping("/postId/{id}")
+    @DeleteMapping("/appointmentId/{id}")
     public void createAppointment(@PathVariable long id) {
         appointmentService.deleteAppointment(id);
     }
@@ -53,5 +53,10 @@ public class AppointmentController {
     @PutMapping("/outcome/{id}")
     public void updateAppointmentOutcome(@PathVariable long id, @RequestParam(value = "status", required = true) String status, @RequestParam(value = "payment", required = false) String paymentType) {
         appointmentService.updateOutcome(id, status, paymentType);
+    }
+
+    @PutMapping("/appointmentId/{id}")
+    public void updateAppointment(@PathVariable long id, @RequestBody Appointment appointment) {
+        appointmentService.updateAppointment(id, appointment);
     }
 }

@@ -83,4 +83,40 @@ public class AppointmentService {
 
         return appointmentRepository.findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(start, end, "completed", paymentType);
     }
+
+    @Transactional
+    public void updateAppointment(long id, Appointment appointment) {
+
+        Appointment appointmentDetails = this.fetchAppointment(id);
+
+
+        if(appointment.getAppDate() != null && !Objects.equals(appointment.getAppDate() , appointmentDetails.getAppDate())) {
+            appointmentDetails.setAppDate(appointment.getAppDate());
+        }
+
+        if(appointment.getStartTime() != null && !Objects.equals(appointment.getStartTime() , appointmentDetails.getStartTime())) {
+            appointmentDetails.setStartTime(appointment.getStartTime());
+        }
+
+        if(appointment.getEndTime() != null && !Objects.equals(appointment.getEndTime() , appointmentDetails.getEndTime())) {
+            appointmentDetails.setEndTime(appointment.getEndTime());
+        }
+
+        if(appointment.getTotalPrice() != null && !Objects.equals(appointment.getTotalPrice() , appointmentDetails.getTotalPrice())) {
+            appointmentDetails.setTotalPrice(appointment.getTotalPrice());
+        }
+
+        if(appointment.getStatus() != null && !Objects.equals(appointment.getStatus() , appointmentDetails.getStatus())) {
+            appointmentDetails.setStatus(appointment.getStatus());
+        }
+
+        if(appointment.getPaymentType() != null && !Objects.equals(appointment.getPaymentType() , appointmentDetails.getPaymentType())) {
+            appointmentDetails.setPaymentType(appointment.getPaymentType());
+        }
+
+        if(appointment.getTreatments() != null && !Objects.equals(appointment.getTreatments() , appointmentDetails.getTreatments())) {
+            appointmentDetails.setTreatments(appointment.getTreatments());
+        }
+
+    }
 }
