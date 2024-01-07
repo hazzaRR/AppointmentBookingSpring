@@ -73,15 +73,16 @@ public class AppointmentService {
 
     public List<Appointment> fetchSummaryReport(String startDate, String endDate, String paymentType) {
 
-        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         final LocalDate start = LocalDate.parse(startDate, dtf);
         final LocalDate end = LocalDate.parse(endDate, dtf);
 
         if(paymentType == null) {
-            return appointmentRepository.findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCase(start, end, "completed");
+            System.out.println("here");
+            return appointmentRepository.findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCase(start, end, "completed");
         }
-
-        return appointmentRepository.findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(start, end, "completed", paymentType);
+        System.out.println("Nope here");
+        return appointmentRepository.findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(start, end, "completed", paymentType);
     }
 
     @Transactional

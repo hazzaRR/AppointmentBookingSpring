@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    public List<Appointment> findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCase(LocalDate startTime, LocalDate endTime, String status);
-
-    public List<Appointment> findAppointmentByAppDateAfterAndAppDateBeforeAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(LocalDate startDate, LocalDate endDate, String status, String paymentType);
+    public List<Appointment> findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCase(LocalDate startTime, LocalDate endTime, String status);
+    public List<Appointment> findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(LocalDate startDate, LocalDate endDate, String status, String paymentType);
 }
