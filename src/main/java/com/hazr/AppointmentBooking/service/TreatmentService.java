@@ -40,7 +40,7 @@ public class TreatmentService {
     }
 
     public void createTreatment(TreatmentDTO treatmentDTO) {
-        Treatment treatment = new Treatment(treatmentDTO.getTreatmentName(), treatmentDTO.getPrice(), treatmentDTO.getDurationMinutes());
+        Treatment treatment = new Treatment(treatmentDTO.getTreatmentName(), treatmentDTO.getPrice(), treatmentDTO.getDurationMinutes(), false);
         treatmentRepository.save(treatment);
     }
 
@@ -53,8 +53,6 @@ public class TreatmentService {
     public void updateTreatment(long id, TreatmentDTO treatmentDTO) {
 
         Treatment treatmentDetails = this.fetchTreatment(id);
-
-        System.out.println(treatmentDetails);
 
         if(treatmentDTO.getTreatmentName() != null && !treatmentDTO.getTreatmentName().isEmpty() && !Objects.equals(treatmentDTO.getTreatmentName(), treatmentDetails.getTreatmentName())) {
             treatmentDetails.setTreatmentName(treatmentDTO.getTreatmentName());
@@ -69,5 +67,19 @@ public class TreatmentService {
             treatmentDetails.setDurationMinutes(treatmentDTO.getDurationMinutes());
         }
 
+    }
+
+    @Transactional
+    public void archiveTreatment(long id, boolean archive) {
+
+        Treatment treatmentDetails = this.fetchTreatment(id);
+
+        if(!Objects.equals(archive, treatmentDetails.isArchived())) {
+            treatmentDetails.setArchived(archive);
+        }
+    }
+
+    public List<Treatment> fetchAllAvailableTreatments() {
+        return treatmentRepository.findAllByArchivedIsFalse();
     }
 }

@@ -25,6 +25,11 @@ public class TreatmentController {
         return treatmentService.fetchAllTreatments();
     }
 
+    @GetMapping("/available")
+    public List<Treatment> getAllAvailableTreatments() {
+        return treatmentService.fetchAllAvailableTreatments();
+    }
+
     @GetMapping("/treatmentId/{id}")
     public Treatment getTreatmentById(@PathVariable long id) {
         return treatmentService.fetchTreatmentById(id);
@@ -43,6 +48,11 @@ public class TreatmentController {
     @PutMapping("/treatmentId/{id}")
     public void updateTreatment(@PathVariable long id, @RequestBody TreatmentDTO treatmentDTO) {
         treatmentService.updateTreatment(id, treatmentDTO);
+    }
+
+    @PutMapping("/archiveTreatment/{id}")
+    public void updateTreatment(@PathVariable long id, @RequestParam(value = "archive", required = true) boolean archive) {
+        treatmentService.archiveTreatment(id, archive);
     }
 
 }

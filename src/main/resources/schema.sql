@@ -20,7 +20,8 @@ CREATE TABLE if not exists treatment (
      ID BIGSERIAL PRIMARY KEY,
      treatment_name VARCHAR,
      price NUMERIC,
-     duration_minutes INTEGER
+     duration_minutes INTEGER,
+     archived BOOLEAN
 );
 
 CREATE TABLE if not exists appointment (
