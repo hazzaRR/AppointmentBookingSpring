@@ -27,6 +27,9 @@ public class AppointmentController {
     @GetMapping("/")
     public List<Appointment> getAllAppointments() {
         return appointmentService.fetchAllAppointments();
+    }    @GetMapping("/appointment-between")
+    public List<Appointment> getAllAppointmentsBetweenRange(@RequestParam(value = "start") String startDate, @RequestParam(value = "end") String endDate) {
+        return appointmentService.fetchAllAppointmentsBetweenRange(startDate, endDate);
     }
 
     @GetMapping("/appointmentId/{id}")

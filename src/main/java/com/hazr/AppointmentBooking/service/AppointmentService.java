@@ -78,10 +78,8 @@ public class AppointmentService {
         final LocalDate end = LocalDate.parse(endDate, dtf);
 
         if(paymentType == null) {
-            System.out.println("here");
             return appointmentRepository.findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCase(start, end, "completed");
         }
-        System.out.println("Nope here");
         return appointmentRepository.findAppointmentByAppDateGreaterThanEqualAndAppDateLessThanEqualAndStatusEqualsIgnoreCaseAndPaymentTypeEqualsIgnoreCase(start, end, "completed", paymentType);
     }
 
@@ -119,5 +117,16 @@ public class AppointmentService {
             appointmentDetails.setTreatments(appointment.getTreatments());
         }
 
+    }
+
+    public List<Appointment> fetchAllAppointmentsBetweenRange(String startDate, String endDate) {
+
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        final LocalDate start = LocalDate.parse(startDate, dtf);
+        final LocalDate end = LocalDate.parse(endDate, dtf);
+
+
+
+        return appointmentRepository.findAppointmentByAppDateGreaterThanEqualAndAppDateLessThan(start, end);
     }
 }
